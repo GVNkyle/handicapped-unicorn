@@ -13,6 +13,13 @@ class Unicorn {
         }
     }
 
+    move() {
+        this.y += this.vy;
+        this.vy += this.gravity;
+        this.y = constrain(this.y, 0, height - this.size);
+        this.x = constrain(this.x, 0, width);
+    }
+
     hits(train) {
 
         /* ----------------------------------- transform from square to circle ---------------------------------- */
@@ -23,15 +30,11 @@ class Unicorn {
         return collideCircleCircle(x1, y1, this.size, x2, y2, train.size);
     }
 
-    move() {
-        this.y += this.vy;
-        this.vy += this.gravity;
-        this.y = constrain(this.y, 0, height - this.size);
-    }
 
     show() {
         image(character, this.x, this.y, this.size, this.size);
-        fill(255,50);
+        //debugger
+        // fill(255, 50);
         // ellipseMode(CORNER);
         // ellipse(this.x, this.y, this.size);
         // rect(this.x, this.y, this.size, this.size);
